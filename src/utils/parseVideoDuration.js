@@ -1,11 +1,9 @@
 export const parseVideoDuration = (duration) => {
-  console.log(duration);
-
   const durationParts = duration
     .replace("PT", "")
     .replace("H", ":")
     .replace("M", ":")
-    .replace("S", ":")
+    .replace("S", "")
     .split(":");
 
   if (durationParts.length === 3) {
