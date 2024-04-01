@@ -35,7 +35,9 @@ export default function Navbar() {
         </div>
         <div className="flex gap-1 items-center justify-center">
           <BsYoutube className="text-3xl text-red-600" />
-          <span className="text-2xl ">Youtube</span>
+          <a href="/">
+            <span className="text-2xl ">Youtube</span>
+          </a>
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
@@ -74,10 +76,12 @@ export default function Navbar() {
             9+{" "}
           </span>
         </div>
-        <img
-          src="https://avatars.githubusercontent.com/u/93429104?v=4"
-          className="w-9 h-9 rounded-full"
-        />
+        <a href="https://mohitp-portfolio.netlify.app/">
+          <img
+            src="https://avatars.githubusercontent.com/u/93429104?v=4"
+            className="w-9 h-9 rounded-full"
+          />
+        </a>
       </div>
     </div>
   );

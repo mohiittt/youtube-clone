@@ -10,16 +10,23 @@ export const getRecommendedVideos = createAsyncThunk(
     const {
       youtubeApp: {
         currentPlaying: {
-          channelInfo: { id: channelId },
+          videoInfo: { channelId }, // Assuming the channelId is stored in videoInfo
         },
       },
     } = getState();
-    const response = await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/activities?&key=${API_KEY}&channelId=${channelId}&part=snippet,contentDetails&maxResults=20&type=videoId=${videoId}`
-    );
-    const items = response.data.items;
-    const parsedData = await parseRecommendedData(items, videoId);
 
-    return { parsedData };
+    // Construct the correct endpoint URL
+    const endpoint = `https://youtube.googleapis.com/youtube/v3/search?key=${API_KEY}&relatedToVideoId=${videoId}&type=video&part=snippet&maxResults=20`;
+
+    try {
+      const response = await axios.get(endpoint);
+      const items = response.data.items;
+      const parsedData = await parseRecommendedData(items, videoId);
+
+      return { parsedData };
+    } catch (error) {
+      console.error("Error fetching recommended videos:", error);
+      throw error;
+    }
   }
 );

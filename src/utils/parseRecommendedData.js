@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import { parseVideoDuration } from "./parseVideoDuration";
 import { convertRawtoString } from "./convertRawtoString";
 import { timeSince } from "./timeSince";
@@ -67,6 +66,7 @@ export const parseRecommendedData = async (items) => {
         });
       }
     });
+
     return parseData;
   } catch (err) {
     console.log(err);
